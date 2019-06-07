@@ -1,6 +1,8 @@
 /**
  * Implementation of the bubble sort.
- * Also helps to find first N max/min number
+ * Also helps to find first N max/min number.
+ * It also called swap sort.
+ * It bubble out the max/min number at the top like bubble in a glass of water
  */
 public class BubbleSort {
 
