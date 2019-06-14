@@ -2,6 +2,13 @@
  * Implementation of the Insertion Sort Take a pointer and assume the left side
  * of the pointer is sorted. Now take a item and insert it into a appropriate
  * position.
+ *
+ * Time Complexity: Best: O(n), Avg: O(n^2), worst: O(n^2)
+ * Space: O(1)
+ *
+ * Can be usefull to sort a small size array. Or imputs are almost sorted only few element is misplaced.
+ * Binary Insertion sort: Use binary search to find the perfect position to insert may improve the performance
+ * insertion from O(n) to O(logn)
  */
 public class InsertionSort {
 

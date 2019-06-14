@@ -3,6 +3,9 @@
  * Also helps to find first N max/min number.
  * It also called swap sort.
  * It bubble out the max/min number at the top like bubble in a glass of water
+ *
+ * Time complexity: Best(already sorted): O(n), Avg/worst: O(n^2)
+ * space: O(1)
  */
 public class BubbleSort {
 
