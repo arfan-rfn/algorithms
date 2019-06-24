@@ -3,7 +3,7 @@
  * It split into two part
  * 	i. devide ii. merge
  *
- * Time complaxity: best/avg/worst: O(nlogn)
+ * Time complexity: best/avg/worst: O(nlogn)
  * space: O(n)
  * 
  * User merge sort on linkedList sorting will be always O(nlogn) and space is O(1)
