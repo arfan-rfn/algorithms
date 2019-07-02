@@ -1,3 +1,4 @@
+
 /**
  * Implementation of the Heap sort (Max heap).
  *
@@ -8,8 +9,8 @@ import java.util.Arrays;
 
 public class HeapSort {
 
-    private int[] array;  // array need to be sort
-    private int size;  // number of item haven't been sorted yet
+    private int[] array; // array need to be sort
+    private int size; // number of item haven't been sorted yet
 
     /**
      * array started with 1 size. double the size as needed
@@ -25,15 +26,14 @@ public class HeapSort {
     }
 
     /**
-     * First build max heap O(nlogn)
-     * heapify each item O(nlogn)
+     * First build max heap O(nlogn) heapify each item O(nlogn)
      */
     public void sort() {
         buildMaxHeap();
         int n = size;
         for (int i = n - 1; i >= 0; i--) {
             swap(0, --size);
-            heapify(0);  // heapifyDown
+            heapify(0); // heapifyDown
         }
     }
 
@@ -55,22 +55,23 @@ public class HeapSort {
     }
 
     /**
-     * Visit every parent nodes (size/2) and heapify each items
+     * Visit every parent nodes (size/2-1) and heapify each items
      * 
      * time complexity: O(nlogn)
      */
     public void buildMaxHeap() {
-        for (int i = size / 2; i >= 0; i--) {
+        for (int i = size / 2 - 1; i >= 0; i--) {
             heapify(i);
         }
     }
 
     /**
-     * Visit every child node form a node, and heapify recursively.
-     * If the sub-tree is not valid tree (parentNode < childNode)
-     * array[parent] = max{leftNode, rightNode}
+     * Visit every child node form a node, and heapify recursively. If the sub-tree
+     * is not valid tree (parentNode < childNode) array[parent] = max{leftNode,
+     * rightNode}
      * 
      * Find the largest child index, and swap with parent
+     * 
      * @param idx node index
      */
     private void heapify(int idx) {
@@ -93,10 +94,11 @@ public class HeapSort {
     }
 
     /**
-     * Swap the first item to the last
-     * then heapify the whole tree until the last element [aka. heapifyDown]
+     * Swap the first item to the last then heapify the whole tree until the last
+     * element [aka. heapifyDown]
      * 
      * unsorted size will be decreased
+     * 
      * @return last item
      */
     public int removeHeap() {
@@ -109,8 +111,7 @@ public class HeapSort {
     }
 
     /**
-     * Adding item to the end of the tree
-     * Then heapifyUp until find the best place
+     * Adding item to the end of the tree Then heapifyUp until find the best place
      */
     public void addItem(int item) {
         ensureArrayCapacity();
