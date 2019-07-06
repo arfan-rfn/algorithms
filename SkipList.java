@@ -7,7 +7,7 @@ public class SkipList {
 
     public static void main(String[] args) {
         SkipList skipList = new SkipList();
-        for (int i = 0; i < new Random().nextInt(100); i++) {
+        for (int i = 0; i < 50; i++) {
             skipList.insert(new Random().nextInt(100));
         }
         // skipList.insert(3);
@@ -26,9 +26,17 @@ public class SkipList {
         // skipList.insert(36);
         // skipList.insert(37);
         // skipList.insert(39);
-        // skipList.insert(43);
+        // skipList.insert(Integer.MAX_VALUE);
+        // skipList.insert(Integer.MIN_VALUE);
         System.out.println(skipList.toString());
-        skipList.remove(18);
+        // System.out.println(skipList.find(Integer.MIN_VALUE));
+        // System.out.println(skipList.find(Integer.MAX_VALUE));
+        // skipList.remove(Integer.MIN_VALUE);
+        // skipList.remove(Integer.MIN_VALUE);
+        // skipList.remove(Integer.MAX_VALUE);
+        // skipList.remove(Integer.MAX_VALUE);
+        // skipList.remove(Integer.MAX_VALUE);
+        System.out.println(skipList.remove(Integer.MAX_VALUE));
         System.out.println(skipList.toString());
     }
 
@@ -105,13 +113,14 @@ public class SkipList {
         }
     }
 
-    public void remove(int data) {
+    public Node remove(int data) {
         Node temp = head;
+        Node removed = null;
         while (temp.down != null) {
             while (temp.next != null && temp.next.data < data) {
                 temp = temp.next;
             }
-            if (temp.next.data == data) {
+            if (temp.next.data == data && temp.next.next != null) {
                 temp.next = temp.next.next;
             }
             temp = temp.down;
@@ -120,23 +129,30 @@ public class SkipList {
         while (temp.next != null && temp.next.data < data) {
             temp = temp.next;
         }
-        if (temp.next.data == data) {
+        if (temp.next.data == data && temp.next.next != null) {
+            removed = temp.next;
             temp.next = temp.next.next;
+            size--;
         }
+        return removed;
     }
 
     public Node find(int data) {
         Node temp = head;
+        Node negInfinity = head;
         while (temp.down != null) {
             while (temp.next != null && temp.next.data <= data) {
                 temp = temp.next;
             }
             temp = temp.down;
         }
+        while (negInfinity.down != null) {
+            negInfinity = negInfinity.down;
+        }
         while (data < temp.data) {
             temp = temp.next;
         }
-        if (temp.data == data) {
+        if (temp != negInfinity && temp.next != null && temp.data == data) {
             return temp;
         }
         return null;
